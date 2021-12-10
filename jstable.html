@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <title>Time Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      const tt = {
+        monday: {
+          "9:30": "Computers",
+          "10:30": "English",
+          "11:20": "Computers",
+        },
+        tuesday: {
+          "9:30": "Maths",
+          "10:30": "English",
+          "11:20": "Maths",
+          "12:10": "Computers",
+        },
+        wednesday: {
+          "9:30": "Maths",
+          "10:30": "English",
+          "11:20": "Computers",
+        },
+        thursday: {
+          "9:30": "Maths",
+          "10:30": "English",
+          "11:20": "Maths",
+          "12:10": "Computers",
+        },
+        friday: { "9:30": "Maths", "10:30": "English", "11:20": "Computers" },
+      };
+
+      window.onload = function () {
+        setTimeout(function () {
+          console.table(tt);
+        }, 500);
+
+        const days = ["monday", "tuesday", "wednesday", "thursday", "friday"];
+        const time_slots = ["9:30", "10:30", "11:20", "12:10"];
+
+        var table = document.getElementById("tt");
+
+        for (let day = 0; day <= days.length - 1; day++) {
+          var row_days = document.createElement("tr");
+          var cell_days = document.createElement("th");
+          var row = document.createElement("tr");
+
+          cell_days.setAttribute("colspan", "4");
+          cell_days.setAttribute("id", "days");
+
+          cell_days.appendChild(document.createTextNode(days[day]));
+          row_days.appendChild(cell_days);
+
+          for (let time = 0; time <= time_slots.length - 1; time++) {
+            var cell = document.createElement("td");
+
+            cell.appendChild(
+              document.createTextNode(
+                tt[days[day]][time_slots[time]] != undefined
+                  ? tt[days[day]][time_slots[time]]
+                  : "Same class continued"
+              )
+            );
+
+            row.appendChild(cell);
+          }
+          table.appendChild(row_days);
+          table.appendChild(row);
+        }
+      };
+    </script>
+
+    <style>
+      table {
+        border: 1px solid;
+        width: 90%;
+        color: aliceblue;
+        background-color: #262626;
+      }
+      table caption {
+        color: #000;
+      }
+      table th {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+      }
+      table th,
+      td {
+        padding: 10px;
+        border: 1px solid gray;
+        margin: 5px;
+        text-align: center;
+      }
+      table #days {
+        background-color: #383232;
+      }
+      .footer {
+        margin: 0 auto;
+        width: 90%;
+        background: linear-gradient(90deg, #262626, #fff);
+        border-radius: 3px;
+        color: #fff;
+      }
+      ul {
+        list-style: none;
+      }
+      ul li {
+        margin-left: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <center>
+        <table id="tt">
+          <caption>
+            <strong> Time Table<br />1:00-1:30 Lunch Break </strong>
+          </caption>
+          <tr>
+            <th>9:30-10:30</th>
+            <th>10:30-11:10</th>
+            <th>11:10-12:10</th>
+            <th>12:10-2:30</th>
+          </tr>
+        </table>
+      </center>
+    </div>
+    <div class="footer">
+      <ul>
+        Made by:
+        <li title="Abhinav Krishna">Abhinav</li>
+        <li title="Jhuveria Siddique">Jhuveria</li>
+        <li title="Uttarkar Sai Nath Rao">Sai</li>
+        <li title="Soha Raqshi">Soha</li>
+      </ul>
+    </div>
+  </body>
+</html>
